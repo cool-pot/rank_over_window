@@ -32,7 +32,6 @@ void rank_over_window(double input[], unsigned int output[], unsigned int input_
     for (size_t j = window_size; j < input_size; j++)
     {
         BOSNode *front_node_to_remove = bostree_lookup(tree, &input[j - window_size]);
-        double *removed_value = front_node_to_remove->key;
         bostree_remove(tree, front_node_to_remove);
         BOSNode *new_node = bostree_insert(tree, &input[j], NULL);
         output[j] = bostree_rank(new_node);
